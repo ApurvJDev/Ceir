@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.apurv.ceiryamldemo2.Ceiryamldemo2ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.025 s -- in com.apurv.ceiryamldemo2.Ceiryamldemo2ApplicationTests
