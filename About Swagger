@@ -1,0 +1,28 @@
+Swagger codegen has the capability of creating api's and and model packages based on the api definition in your .yaml or .yml files.
+.yml and .yaml files are to be created inside resources directory.
+In pom.xml you will find a plugin which has been given a path to the api.yml file.
+The files are created in the target directory in generated sources.
+Make sure to run clean and install your maven project to generate the files and reload maven project to configure the added plugin in the pom.xml file.
+
+Swagger also provides swagger-ui which gives info about all the api's your project exposes.
+If your springboot version is less than 3.0 you need to use springfox dependencies or else springdoc dependecies are to be used.
+With the swagger-ui you can use the http methods and test your project accordingly.
+It is much more efficient than postman-api because it identifies what type of data is required and creates sample data to be used as is.
+In my case, the api my project exposes are very less but if your project has many api's swagger will make managing and debugging your project very easy.
+
+To see swagger-ui, run your project and type the following: http://localhost:{your_port_number}/swagger-ui/index.html
+
+Make sure you add the config file according to the documentation.
+You can also add security rules for by adding the security dependencies.
+This security dependency will add an authentication to view the swagger-ui. By defualt the username is user and password will be given in your intellij console.
+For this project, I have not added any security rules but have commented out the dependencies if you need it.
+
+About Project Structure:
+For bigger project it is possible that some of your controller packages may be on the same level or above the level of your package which contains main class.
+If that is the case define those packages to the component scan annotation of your main class.
+Component scan will make sure to scan the defined packages along with the one inside the base package.
+If those controller package are not defined swagger-ui wont be able to identify all the controller endpoints.
+Refer to this stackoverflow link to get better understanding: https://stackoverflow.com/questions/31134333/this-application-has-no-explicit-mapping-for-error
+
+If your springboot version is greater than 3.0 read this documentation: https://springdoc.org/migrating-from-springfox.html
+If your springboot version is less than 3.0 read this documentation: https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
