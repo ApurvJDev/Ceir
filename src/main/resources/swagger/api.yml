@@ -1,0 +1,156 @@
+openapi: '3.0.1'
+
+info:
+  title: ceir
+  version: "1"
+  description: ceirAPI
+
+paths:
+
+  /unblockRequest:
+    post:
+      summary: Unblock request by user
+      operationId: unblockRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/unblockRequestDTO'
+      responses:
+        200:
+          description: "Unblock Request Information posted"
+          content:
+            application/json:
+              schema:
+                type: string
+                properties:
+                  message:
+                    type: string
+        400:
+          description: "Required value is missing or invalid"
+          content:
+            application/json:
+              schema:
+                type: string
+                properties:
+                  message:
+                    type: string
+        404:
+          description: "Route not found"
+          content:
+            application/json:
+              schema:
+                type: string
+                properties:
+                  message:
+                    type: string
+
+  /blockRequest:
+    post:
+      summary: Block request by user
+      operationId: blockRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/blockRequestDTO'
+      responses:
+        200:
+          description: "Block Request Information Posted"
+          content:
+            application/json:
+              schema:
+                type: string
+                properties:
+                  message:
+                    type: string
+        400:
+          description: "Required value is missing or invalid"
+          content:
+            application/json:
+              schema:
+                type: string
+                properties:
+                  message:
+                    type: string
+        404:
+          description: "Route not found"
+          content:
+            application/json:
+              schema:
+                type: string
+                properties:
+                  message:
+                    type: string
+
+components:
+  schemas:
+    unblockRequestDTO:
+      type: object
+      description: Contains Unblock Request Details
+      properties:
+        requestId:
+          type: integer
+        mobNumForOtp:
+          type: string
+        reasonForUnblock:
+          type: string
+
+    blockRequestDTO:
+      type: object
+      description: Contains Device information and User information and Lost information
+      properties:
+        deviceInfoDTO:
+          $ref: '#/components/schemas/deviceInfoDTO'
+        lostInfoDTO:
+          $ref: '#/components/schemas/lostInfoDTO'
+        ownerInfoDTO:
+          $ref: '#/components/schemas/ownerInfoDTO'
+
+    lostInfoDTO:
+      type: object
+      properties:
+        lostPlace:
+          type: string
+        lostDate:
+          type: string
+        lostState:
+          type: string
+        lostDistrict:
+          type: string
+        lostPoliceStation:
+          type: string
+        policeComplaintNum:
+          type: string
+
+    ownerInfoDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        email:
+          type: string
+        mobNumForOtp:
+          type: string
+
+    deviceInfoDTO:
+      type: object
+      properties:
+        deviceMobNum1:
+          type: string
+        deviceMobNum2:
+          type: string
+        imei1:
+          type: string
+        imei2:
+          type: string
+        deviceBrand:
+          type: string
+        deviceModel:
+          type: string
+
+
